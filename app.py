@@ -7,7 +7,7 @@ import os
 
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
+app.config['SECRET_KEY'] = "secret"
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL",  "sqlite:///users.db")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
@@ -29,7 +29,7 @@ class User(UserMixin, db.Model):
 
 
 # db.create_all only once
-#db.create_all()
+db.create_all()
 
 @app.route('/')
 def home():
